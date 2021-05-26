@@ -16,11 +16,11 @@ namespace Catalog.API.Entities
         [BsonElement("Name")]
         public string Name { get; set; }
 
-        public string Catregory { get; set; }
-        public string Sumary { get; set; }
+        public string Category { get; set; }
+        public string Summary { get; set; }
         public string Description { get; set; }
         public string ImageFile { get; set; }
         public decimal Price { get; set; }
-
+     
     }
 }
