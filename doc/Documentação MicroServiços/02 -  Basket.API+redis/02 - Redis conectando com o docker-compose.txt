@@ -1,0 +1,13 @@
+1 - Primeiro de tudo em https://hub.docker.com/ e procure por Redis, clique no redis docker official images, segue toda documentação... https://hub.docker.com/_/redis.
+
+2 - Faça a conexção no docker-compose:
+	*Clique com o botão direito no docker-compose abra-o no terminal.
+	*Digite o codigo para instalar a imagem do redis "docker pull redis"
+	*Digite o codigo para habilitar a porta do redis "docker run -d -p 6379:6379 --name aspnetrun-redis redis"
+	*Digite o codigo para ler as informações do log "docker logs -f aspnetrun-redis"
+
+2.1 - habilita edição atravez dos comandos do REDIS	
+	*Digite o codigo: "docker exec -it aspnetrun-redis /bin/bash"
+	*Digite o codigo para entrar na linha de comandos do redis: "redis-cli"
+
+	

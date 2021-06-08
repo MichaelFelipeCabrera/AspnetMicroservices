@@ -1,0 +1,10 @@
+1 - Criar pasta dentro de Services com o nome da API desejada "Basket";
+2 - Clicar com o boato direito na pasta Basket, vá em "new project", procurar na linuagem C#, Asp.Net Core Web Api, configurar corretamente e criar;
+
+3 - Configure as Properties da Basket.API
+	* Na aba Debug mude: Profile para >Basket.API<, Lauch para >Project<, LocalHost para >5001<. CRTL+S para salvar e pronto.
+
+4 - Clique com o botão direito na Basket.API->Set as Startup Project selecione na parte de execução a Basket.API e clica em Run para testar.
+
+
+	
