@@ -1,0 +1,24 @@
+1 - Abra o Package Manager Console
+	*Troque o Default Project para Basket.API	
+
+2 - Instale o Pacote da Microsofft = StackExchangeRedis
+	* Install-Package Microsoft.Extensions.Caching.StackExchangeRedis 
+      -Atualize o nome.
+	* Update-Package -ProjectName Basket.API	
+	
+3 - Abra Startup.cs
+	- Adcione o novo serviço que acabamos de baixar ao Startup.
+	- No método ConfigureServices(IServiceCollection services) digite logo abaixo.
+		* services.AddStackExchangeRedisCache(options =>
+		 {
+		      options.Configuration = "localhost:6379"
+		  });
+
+4 - Abra o appssetings.json e adcione o Cache de confiruação feira acima passando na connectionString o localhost acima.
+	- adcione a depois da primeira chaves
+	  *"CacheSettings": {
+	     "ConnectionString": "localhost:6379"
+	   },
+
+5 - Abra novamete o Startup.cs e substitua o (options.Configuration = "localhost:6379")que criamos na parte 3, para facilitar a manutenção.
+	*options.Configuration = Configuration.GetValue<string>("CacheSettings:ConectionString");
