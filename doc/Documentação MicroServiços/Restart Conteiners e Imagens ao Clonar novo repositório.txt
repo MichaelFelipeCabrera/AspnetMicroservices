@@ -1,0 +1,5 @@
+Ao clonar a solução para um novo PC para que as atualizações de Conteiners e imagens apareçam, é nescessário seguir esses passos.
+
+	1 - Entre na pasta da solução "src"
+	2 - No explorador apague tudo e digite cmd
+		* No Prompt de Comando digite o código = "docker-compose up"

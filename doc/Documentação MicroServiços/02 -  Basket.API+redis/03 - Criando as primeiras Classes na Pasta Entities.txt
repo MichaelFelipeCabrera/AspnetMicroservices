@@ -1,0 +1,27 @@
+1 - Em Basket.API remova WeatherForecast.cs e sua Controller respectivamente.
+
+2 -  Crie a Pasta Entities em Basket.API
+	
+	-Crie a Classe ShoppingCartItem
+		*int Quantity
+		*string Color
+		*decimal Price
+		*string ProductId
+		*ProductName
+	-Crie a Classe ShoppingCart
+		* string Username
+		* List <ShoppingCartItem> Items "Já inicia esse = '= new List<ShoppingCartItem>();'"
+		* Construtor com UserName
+	     -Depois do construtr crie uma nova propriedade porém já implementada.
+		* public decimal TotalPrice 
+		  {
+		     get			
+		     {
+			decimal totalprice= 0;
+			foreach (var item in Items)
+		        {
+			    totalprice+=item.Price*item.Quantity;
+			}
+			return totalprice;	
+	              }
+		    }
