@@ -1,0 +1,26 @@
+1 - Na raiz da solução na pasta "Services" clique com o botão direito e crie uma nova pasta "Discount"
+
+2 - Clique com o botão direito na pasta "Discount" ADD/new Project
+	*Escolha a opçãp em C# "ASP.NET core web API"
+
+3 - Configure o projeto para iniciar
+	
+	*Project name : Discount.API
+	*Location     : \src\Services\Discount
+		next
+	*Target Fram..: .NET 5.0
+	*Authentica...: None
+	* >Enable openAPI support<  apenas essa marcada
+		create
+
+4 - Configure as Properties de Discount.API, clique com o botão direito e vá para Properties.
+	 
+	4.1 - Na aba Debug
+		*Profile 	:Discount.API
+		*Launch 	:Project
+		*Launch browser :swagger
+		*APP URL	:http://localhost:5002
+
+
+	
+	
