@@ -1,0 +1,27 @@
+1 - Abra o docker-compose.yml
+	
+	1.1 - Na configuração *services* adicione o pgadmin abaixo do discountdb
+pgadmin:
+  image: dpage/pgadmin4
+
+	1.2 - Na configuração *volumes* adicione o pgadmin_data: depois do postgres_data:
+pgadmin_data: 
+
+2 - Abra o docker-compose.override.yml
+	
+	2-1 - Na configuração *services* adicione o pgadmin abaixo do discountdb:		  
+pgadmin:
+  container_name: pgadmin
+  environment:
+    - PGADMIN_DEFAULT_EMAIL=admin@aspnetrun.com
+    - PGADMIN_DEFAULT_PASSWORD=admin1234
+  restart: always
+  ports:
+    - "5050:80"
+  volumes:
+    - pgadmin_data:/root/.pgadmin
+		
+	
+
+Finalizar atualizando o docker-compose, abra no terminal e digite
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
