@@ -1,26 +1,41 @@
 1 - Abra o docker-compose.yml
 	
-	1.1 - Adcione dentro da configuração *services* mais uma configuração de banco de dados e image.
-		*basketdb:
-	 	  image: redis:alpine    
+	1.1 - Na Configuração *service* adicione abaixo de basketdb o serviço do portainer.
+		*portainer:
+		  image: portainer/portainer-ce
+	
+	1.2 - Mais a baixo na Congiguração *Volumes:* adicione o portainer_data:
+		*portainer_data:
 
 
-2 - Abra o docker-compose.override.yml
+2 -  Abra o docker-compose.override.yml
 	
-	2.1 Dentro da configuração *services* adicione mais uma configurações referente ao container abaixo das configurações do *catalogdb:*
-		*basketdb: 
-		   container_name: basketdb
-		   restart: always
-		   ports:
-		     -"6379:6379"
-	
-FINAL
-Ao termino exlua todas as imagens containers e volumes do Docker desktop abra o docker-compose no terminal e digite o codigo abaixo para atualizar as imagens e conteiners
+	2.1 - Na configuração *service* Adcione as configurações do conteiner do portainer depois do catalogdb
+		*portainer: 
+		  container_name: portainer
+		  restart: always
+		  ports:
+		    - "8080:8000"
+		    - "9000:9000"
+		  volumes: 
+		    - /var/run/docker.sock:/var/run/docker.sock
+		    - portainer_data:/data
+
+
+3 - Abra o docker-compose no terminal e atualize o docker para que apareça o portainer.
 docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 
+Após feito isso abra o localhost na porta 9000 no navegador cadastre uma senha no portainer.io. 
+Saia e entre novamente para acessar seu banco de dados conecte com o docker e pronto.
 
-___CODIGO FINAL___docker-compose.override.yml
 
+
+
+
+
+
+
+___CODIGO Docker-compose.override.yml FINAL___
 version: '3.4'
 
 services:
@@ -31,6 +46,16 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+
+  portainer: 
+    container_name: portainer
+    restart: always
+    ports:
+      - "8080:8000"
+      - "9000:9000"
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
 
   basketdb:
     container_name: basketdb
@@ -64,8 +89,7 @@ services:
 
 
 
-___CODIGO FINAL___docker-compose.yml
-
+___CODIGO Docker-compose.yml FINAL___
 version: '3.4'
 
 services:
@@ -74,7 +98,10 @@ services:
 
   basketdb:
     image: redis:alpine   
-    
+
+  portainer:
+   image: portainer/portainer-ce
+   
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
@@ -89,6 +116,7 @@ services:
 
 volumes:
   mongo_data:
+  portainer_data:
 
 
 
