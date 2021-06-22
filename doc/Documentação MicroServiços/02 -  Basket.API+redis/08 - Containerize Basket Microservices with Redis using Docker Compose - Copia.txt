@@ -1,0 +1,49 @@
+1 - Em Basket.API, clique com o botão direito ADD/Container Orchestrator Suport...
+	*Escolha "Docker Compose"
+	*Escolha "Linux"
+
+2 - Abra o docker-compose.override.yml e veja que foi acrescentado a configuração do basket.api. linha 22.
+
+     	2.1 Adicione a configuração para o nome do conteiner logo abaixo de basket.api :*container-name: basket.api*
+     
+	2.2 Adcione o tipo de conexão e a porta, que colocamos no appsettings.jason, na confiruração de environment:*  - "CacheSettings:ConnerctionString=basketdb:6379"
+    	
+   	2.3 Adcione a configuração *depends_on:*  abaixo da configuração *environment:*
+		* Adcione o nome do Banco de dados em depends_on: *  - basketdb
+	
+	2.4 Altere a porta para - "8001:80"
+
+
+
+
+___CODIGO COMPLETO___
+version: '3.4'
+
+services:
+  catalogdb:
+    container_name: catalogdb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  catalog.api:
+    container_name: catalog.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
+    depends_on:
+      - catalogdb
+    ports:
+      - "8000:80"
+
+  basket.api:
+    container_name: catalog.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "CacheSettings:ConnerctionString=basketdb:6379"
+    depends_on:
+      - basketdb
+    ports:
+      - "8001:80"
