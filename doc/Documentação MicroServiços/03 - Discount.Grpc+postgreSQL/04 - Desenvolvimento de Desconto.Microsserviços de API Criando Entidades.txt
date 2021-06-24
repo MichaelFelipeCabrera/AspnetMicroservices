@@ -1,0 +1,9 @@
+1 - Dentro de Discount.API , exclua WeatherForecast.cs e sua respectiva controller na pasta Controller também.
+
+2 - Adcione dentro de Discount.API a pasta Entities e a classe:
+
+	* Coupon
+public int ID { get ; set }
+public string ProductName { get ; set }
+public string Description { get ; set }
+public int Amount { get ; set }
