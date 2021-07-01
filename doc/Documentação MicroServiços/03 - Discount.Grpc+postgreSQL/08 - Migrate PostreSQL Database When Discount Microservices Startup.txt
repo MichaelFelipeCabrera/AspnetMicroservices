@@ -98,3 +98,8 @@ namespace Discount.API.Extensions
         }
     }
 }
+
+
+
+3 - Update Docker-compose
+	* docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
