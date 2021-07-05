@@ -1,0 +1,17 @@
+1 - Na pasta Discount 
+	
+	* Botão direinto Add/new project
+		* procure por gRPC
+	
+	1.1 
+	* Project name:  Discount.Grpc
+	* Location adicione "src\Services\Discount" depois de AspnetMicroservices.
+
+	1.2
+	*Target Framework: .NET 5.0(Current)
+
+
+2 - Clique com o borão direito em Discount.Grpc/Properties
+	
+	* Na aba Debug
+	- App Url : localhost:5003
