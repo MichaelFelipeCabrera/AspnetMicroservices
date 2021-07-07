@@ -2,4 +2,4 @@ Ao clonar a solução para um novo PC para que as atualizações de Conteiners e
 
 	1 - Entre na pasta da solução "src"
 	2 - No explorador apague tudo e digite cmd
-		* No Prompt de Comando digite o código = "docker-compose up"
+		* No Prompt de Comando digite o código = "docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d"
