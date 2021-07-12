@@ -1,0 +1,40 @@
+1 - Abra Discount.API copie alguns PackageReference dentro da TAG <ItemGroup>
+
+	Dapper
+	Npgsql
+
+	1.1 - Abra Discount.Grpc e cole dentro da Tag <ItemGroup> abaixo das Tags <PakcageReference>
+
+
+2 - Abra Discount.API Copie a pasta "Entities"
+
+	2.1 - Cole a pasta dentro de Discount.Grpc
+	
+	2.2 -  Dentro da pasta Entities abra o Coupon.cs e troque o namespace para "Discount.Grpc.Entities"
+
+	2.3 -  Faça o mesmo Com as pastas Repositories e Extensions
+
+
+3 - Dentro de Discount.API/appsettings.json
+	
+	* Copie a conexão do banco de Dados "DatabaseSettings: " para o Discount.Grpc/appsettings.json
+
+
+4 - Dentro de Discount.API/Startup copie, dentro do método ConfigureServices(IServiceCollection services):
+	
+	* services.AddScoped<IDiscountRepository, DiscountRepository>();
+	
+	4.1 -  Cole na pasta respectiva de Discount.Grpc/Startup
+
+
+5 - Dentro de Discount.API/Program.cs, no método Main(string[] args), Copie:
+	
+	* var host = CreateHostBuilder(args).Build();
+	  host.MigrateDatabase<Program>();
+	  host.Run(); 	
+	
+	5.1 - Cole na respectiva pasta de Discount.Grpc/Program.cs
+
+
+6 - Abra o docker-compose no terminal e atualize o docker.
+	"docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d"
