@@ -1,0 +1,7 @@
+1 - Em Discount.Grpc na pasta Protos Clique com o botão direito em discount.proto/properties
+	
+	* - Build Action : Protobuf compiler
+	* - gRPC Stub Classes: Server only
+
+Rebuild
+.
