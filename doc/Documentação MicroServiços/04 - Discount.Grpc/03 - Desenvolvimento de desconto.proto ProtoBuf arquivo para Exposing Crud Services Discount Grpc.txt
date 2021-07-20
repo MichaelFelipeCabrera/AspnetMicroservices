@@ -1,0 +1,52 @@
+1 - Dentro de Discount.Grpc/Protos Delete tudo dentro desta pasta.
+
+	1.1 -  Faça o mesmo com a pasta Discount.Grpc/Services.
+	
+	1.2 - Abra Startup.cs, dentro do metodo void Configure, Comente a linha do GreeterService(),
+	Pois exlcuimos o serviço no passo anterior; Rebild.
+
+
+
+2 - Clique com o botão direito na pasta Protos/Add/new Item.
+	
+	2.1 - Procure por "proto", : Protocol Buffer File
+		* Name:  discount.proto
+		* ADD.
+
+
+3 - Dentro do Protocolo criado adcione as seguites linhas de codigo
+
+service DiscountProtoService {
+	rpc GetDiscount (GetDiscountRequest) returns (CouponModel);
+
+	rpc CreateDiscount (CreateDiscountRequest) returns (CouponModel);
+	rpc UpdateDiscount (UpdateDiscountRequest) returns (CouponModel);
+	rpc DeleteDiscount (DeleteDiscountRequest) returns (DeleteDiscountResponse);
+}
+
+message GetDiscountRequest {
+	string productName = 1;	
+}
+
+message CouponModel {
+	int32 id = 1;
+	string productName = 2;
+	string description = 3;
+	int32 amount = 4;
+}
+
+message CreateDiscountRequest {
+	CouponModel coupon = 1;
+}
+
+message UpdateDiscountRequest {
+	CouponModel coupon = 1;
+}
+
+message DeleteDiscountRequest {
+	string productName = 1;
+}
+
+message DeleteDiscountResponse {
+	bool success = 1;
+}
