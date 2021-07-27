@@ -1,0 +1,40 @@
+1 -  Em Discount.Grpc/Services Crie uma classe chamada DiscountService
+
+	* Extenda -> DiscountService : DiscountProtoService.DiscountProtoServiceBase
+	
+	1.1 Implemente
+	
+ private readonly IDiscountRepository _repository;
+        private readonly ILogger<DiscountService> _logger;
+
+	1.2 -  Crie um Construtor com as duas variaveis
+	
+	public DiscountService(IDiscountRepository repository, ILogger<DiscountService> logger)
+        {
+       _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+       _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+        }
+
+	1.3 - Adicione um override para GetDiscount()
+
+	public override async Task<CouponModel> GetDiscount(GetDiscountRequest request, ServerCallContext context)
+        {
+            var coupon = await _repository.GetDiscount(request.ProductName);
+            if (coupon == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, $"Discount with ProductName={request.ProductName} is not found."));
+            }
+            _logger.LogInformation("Discount is retrieved for ProductName : {productName}, Amount : {amount}", coupon.ProductName, coupon.Amount);
+
+            var couponModel = _mapper.Map<CouponModel>(coupon);
+            return couponModel;
+        }
+
+2 - Dentro de Discount.Grpc, Abra Startup.cs e Descomente no metodo void Configure()
+	* enpoints.MapGrpcServices<GreeterService>(); e substitua por, enpoints.MapGrpcServices<DiscountService>()
+
+
+
+
+
