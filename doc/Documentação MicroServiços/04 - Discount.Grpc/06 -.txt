@@ -1,2 +1,0 @@
-3 - Abra o Package Manager Console e Instale o pacote de dependencia de injeção da microsoft automapper para funcionar o mapper.
-	*Instal-Package AutoMapper.Extensions.Microsoft.DependencyInjection

@@ -1,25 +1,28 @@
-﻿using AutoMapper;
-using Discount.Grpc.Protos;
-using Discount.Grpc.Repositories;
-using Grpc.Core;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+1 - Abra o Package Manager Console e Instale o pacote de dependencia de injeção da microsoft automapper para funcionar o mapper.
+	*Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection
 
-namespace Discount.Grpc.Services
-{
-    public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
-    {
+
+2 - Em Discount.Grpc Crie a pasta Mapper, 
+	* dentro de Mapper crie a classe DiscountProfile.
+	* Extenda -> DiscountProfile : Profile
+
+2.1 -  implemente
+	public DiscountProfile()
+        {
+            CreateMap<Coupon, CouponModel>().ReverseMap();
+        }
+
+
+2.2 - Em Discount.Grpc/Services/DiscountService Adcione o IMapper em toda implementação
+
         private readonly IDiscountRepository _repository;
         private readonly IMapper _mapper;
         private readonly ILogger<DiscountService> _logger;
 
 
-        public DiscountService(IDiscountRepository repository, IMapper mapper, ILogger<DiscountService> logger)
+	public DiscountService(IDiscountRepository repository, IMapper mapper, ILogger<DiscountService> logger)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+           _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
@@ -38,5 +41,7 @@ namespace Discount.Grpc.Services
         }
 
 
-    }
-}
+
+3 - Em Discount.Grpc/Startup adcione no metodo void ConfigureServices() o Serviço  AutoMapper abaixo de addscopod
+		
+	services.AddAutoMapper(typeof(Startup));
