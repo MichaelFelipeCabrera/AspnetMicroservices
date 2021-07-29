@@ -1,0 +1,6 @@
+1 - Em Basket.API Clique com o botão direito Add/Connected Service
+
+	- Em -> Service References (OpenAPI,gRPC) Clique em -> : Add
+	- gRPC
+		- File: Procure a pasta Services/Discount.Grpc/Protos/discount.proto
+	- Select the type of class to be generated : Client. Finish. Close.
