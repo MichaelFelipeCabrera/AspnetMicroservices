@@ -1,0 +1,43 @@
+1 - Em Basket.API Crie uma pasta "GrpcServices"
+	
+	- Crie uma classe chamada DiscountGrpcService
+
+	IMPLEMENTE
+		
+  private readonly DiscountProtoService.DiscountProtoServiceClient _discountProtoService;
+
+        public DiscountGrpcService(DiscountProtoService.DiscountProtoServiceClient discountProtoService)
+        {
+            _discountProtoService = discountProtoService ?? throw new ArgumentNullException(nameof(discountProtoService));
+        }
+
+        public async Task<CouponModel> GetDiscount(string productName)
+        {
+            var discountRequest = new GetDiscountRequest { ProductName = productName };
+            return await _discountProtoService.GetDiscountAsync(discountRequest);
+
+
+
+2 - Em Basket.API/Controllers/BasketController.cs
+	
+	2.1 - Adicione uma variavel de controle no inicio
+		private readonly DiscountGrpcService _discountGrpcService;
+		
+		* Atualize o Construtor 
+public BasketController(IBasketRepository repository, DiscountGrpcService discountGrpcService)
+        {
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            _discountGrpcService = discountGrpcService ?? throw new ArgumentNullException(nameof(discountGrpcService));
+           
+        }
+
+
+	2.2 - no método UpdateBasket() Adicione um Foreach
+
+	   foreach (var item in basket.Items)
+        	    {
+                	var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
+                	item.Price -= coupon.Amount;
+            	     }
+
+
