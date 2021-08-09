@@ -1,0 +1,21 @@
+1 - Em Basket.API/Startup.cs 
+
+	- No metodo ConfigureServices() adicione o serviço
+ 
+
+services.AddScoped<IBasketRepository, BasketRepository>();
+
+            services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>
+                (o => o.Address = new Uri(Configuration["GrpcSettings:DiscountUrl"]));
+
+            services.AddScoped<DiscountGrpcService>();
+
+
+
+2 - Em Basket.API/appsettings.json
+
+	- Adcione a conectionstring do grpc
+
+ "GrpcSettings": {
+    "DiscountUrl": "http://localhost:5003"
+  },	

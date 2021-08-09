@@ -1,0 +1,18 @@
+1 - Na pasta Services crie uma pasta "Ordering"
+	
+	* Adcione um new project e procure ASP.NET Core Web API
+	* Nome do projeto : Ordering.API
+	* Corrija o Location: src\Services\Ordering
+	
+	* Target Framework: .NET 5.0(Current)
+	* Authentication Type: None 
+	* Disable : Configure for HTTPS
+	* Enable : Enable OpenAPI Support
+
+
+	
+2 - Botão Direito em Ordering.API/Properties - na Aba Debug
+
+	*Profile: Ordering.API
+	
+	*App URL ...5004
