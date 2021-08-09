@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 namespace Basket.API.Entities
 {
     public class ShoppingCart
@@ -9,6 +10,7 @@ namespace Basket.API.Entities
         public ShoppingCart()
         {
         }
+
         public ShoppingCart(string userName)
         {
             UserName = userName;
@@ -26,6 +28,5 @@ namespace Basket.API.Entities
                 return totalprice;
             }
         }
-
     }
 }
