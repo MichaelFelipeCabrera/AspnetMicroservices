@@ -1,0 +1,23 @@
+1 - Na pasta Ordering Adcione um Projeto
+	* Procure por Class Libary
+	
+	* Project name : Ordering.Domain
+	* Atualize a Location : \src\Services\Ordering
+
+	* .NET 5.0(Current) 
+
+
+2 - Adcione mais uma Class Libary
+	
+	* Project name : Ordering.Application
+	* Atualize a Location : \src\Services\Ordering
+
+	* .NET 5.0(Current) 
+
+
+3 - Adcione mais uma Class Libary
+	
+	* Project name : Ordering.Infrastructure
+	* Atualize a Location : \src\Services\Ordering
+
+	* .NET 5.0(Current) 
