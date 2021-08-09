@@ -6,7 +6,7 @@ basket.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings:ConnectionString=basketdb:6379"
-      - "GrpcSettings:DiscountUrl=discount.grpc"
+      - "GrpcSettings:DiscountUrl=http://discount.grpc"
     depends_on:
       - basketdb
     ports:
