@@ -1,0 +1,13 @@
+1 - Em docker-compose.override.yml procure por basket.api
+
+	* Adcione a configuração de GrpcSettings em envionment fica assim:
+basket.api:
+    container_name: basket.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "CacheSettings:ConnectionString=basketdb:6379"
+      - "GrpcSettings:DiscountUrl=discount.grpc"
+    depends_on:
+      - basketdb
+    ports:
+      - "8001:80"

@@ -40,7 +40,6 @@ namespace Basket.API
             
             services.AddScoped<DiscountGrpcService>();
 
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
