@@ -1,0 +1,16 @@
+1 - Em Ordering.API/Ordering.Application/Dependencies Clique com o botão direito e Adcione uma Referencia ao projeto
+	* Add Project Reference...
+	* Selecione Ordering.Domain
+	OK
+
+
+2 -  Faça o mesmo em Ordering.API/Ordering.Infrastrutucre/Dependencies 
+	* Add Project Reference...
+	* Selecione Ordering.Domain
+	OK
+
+
+3 - em Ordering.API/Dependencies
+	* Add Project Reference...
+	* Selecione Ordering.Application && Ordering.Infrastructure
+	OK
